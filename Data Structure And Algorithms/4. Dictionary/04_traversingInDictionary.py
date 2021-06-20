@@ -14,7 +14,10 @@ def searchDict(dt,x):
 			return (f"The value is at the key: {i}")
 	return ("The value doesn't exit!!")
 
-print(searchDict(a, "uno"))
+
+traverseDict(a)
+
+
 	
 
 	

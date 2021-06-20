@@ -29,10 +29,10 @@ class Stack:
                return False
 
      def pop(self):
-          if self.isEmpty():
-               return -1
-          else:
-               self.head=self.head.next
+          
+          k=self.head.val
+          self.head=self.head.next
+          return k
 
      def peek(self):
           return self.head.val
@@ -47,19 +47,38 @@ class Stack:
 
 class MyQueue:
      def __init__(self):
-          self.stack1=stack()
-          self.stack2=stack()
+          self.stack1=Stack()
+          self.stack2=Stack()
 
      def push(self, x: int) -> None:
-
+          self.stack1.push(x)
+          return None
+     def pop(self) -> int:
+          tempNode=self.stack1.head
+          while tempNode:
+               self.stack2.push(self.stack1.pop())
+               tempNode=tempNode.next
           
-    def pop(self) -> int:
-        """
-        Removes the element from in front of queue and returns that element.
-        """
-        
+          ret=self.stack2.pop()
+          tempNode=self.stack2.head
+          while tempNode:
+               self.stack1.push(self.stack2.pop())
+               tempNode=tempNode.next
+          
+          return ret
 
-    def peek(self) -> int:
-        """
-        Get the front element.
-        """
+     def peek(self) -> int:
+          tempNode=self.stack1.head
+          while tempNode.next:
+               tempNode=tempNode.next
+          
+          return tempNode.val
+
+elishaQ=MyQueue()
+elishaQ.push(1)
+elishaQ.push(2)
+elishaQ.push(3)
+elishaQ.push(4)
+elishaQ.push(5)
+elishaQ.pop()
+print(elishaQ.peek())
