@@ -56,14 +56,14 @@ class Queue:
         self.linkedlist.tail=None
         print("Queue is successfully deleted!")
     
-
-queue=Queue()
-queue.enQueue(34)
-queue.enQueue(28)
-queue.enQueue(21)
-queue.enQueue(13)
-print(queue)
-print(queue.deQueue())
-print(queue)
-queue.delete()
-print(queue)
+if __name__=="__main__":
+    queue=Queue()
+    queue.enQueue(34)
+    queue.enQueue(28)
+    queue.enQueue(21)
+    queue.enQueue(13)
+    print(queue)
+    print(queue.deQueue())
+    print(queue)
+    queue.delete()
+    print(queue)

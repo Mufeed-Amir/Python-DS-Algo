@@ -1,4 +1,3 @@
-a=[[1,2],[1],[1,5],[7]]
-
-del a[-1]
-print(a[-1])
+tempNode=None
+if not tempNode:
+     print("K")
