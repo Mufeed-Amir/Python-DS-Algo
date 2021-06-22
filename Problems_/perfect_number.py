@@ -14,9 +14,6 @@ class Solution:
 
 
 
-
-
-
 num=Solution()
 m=num.isPerfectNumber(8)
 print(m)
