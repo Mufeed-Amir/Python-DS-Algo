@@ -10,5 +10,10 @@ class Solution:
         m=self.f(n)//(self.f(n-r)*self.f(r))
         return m%1000000007
 
-num=Solution()
-print(num.nCr(13,2))
+
+def nCr(n,r):
+     if r>n:
+          return 0
+     if r==0:
+          return 1
+     return nCr(n,r-1)*(n-r+1)/r
