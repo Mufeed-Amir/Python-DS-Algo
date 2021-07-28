@@ -1,5 +1,8 @@
-a=[None]*2
-a[1]=None
-print(a)
+import math as mt
+arr=[1,2,3,4,5,6,7,8,9]
+
+nBucket=round(mt.sqrt(len(arr)))
+
+print(nBucket)
 
 
