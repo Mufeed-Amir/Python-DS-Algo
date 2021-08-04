@@ -1,69 +1,35 @@
 class ListNode:
-    def __init__(self,val=None):
+    def __init__(self,val):
         self.val=val
         self.next=None
-class LinkedList:
+class Queue:
     def __init__(self):
         self.head=None
         self.tail=None
-    
     def __iter__(self):
         tempNode=self.head
         while tempNode:
             yield tempNode
             tempNode=tempNode.next
-            
-class Queue:
-    def __init__(self):
-        self.linkedlist=LinkedList()
-    
     def __str__(self):
-        if self.linkedlist.head==None:
-            return "Queue is empty"
-        else:    
-            values=[str(x.val) for x in self.linkedlist]
-            return "<--".join(values)
+        dlist=[str(x.val) for x in self]
+        return " <-- ".join(dlist)
     
-
-    def enQueue(self,value):
-        if self.linkedlist.head==None:
-            self.linkedlist.head=ListNode(value)
-            self.linkedlist.tail=self.linkedlist.head
+    def enQueue(self,data):
+        newNode=ListNode(data)
+        if self.head==None:
+            self.tail=newNode
+            self.head=newNode
         else:
-            self.linkedlist.tail.next=ListNode(value)
-            self.linkedlist.tail=self.linkedlist.tail.next
-    def isEmpty(self):
-        if self.linkedlist.head==None:
-            return True 
+            self.tail.next=newNode
+            self.tail=newNode
+    def deQueue(self):
+        if not self.isMT():
+            value=self.head.val
+            self.head=self.head.next
+            return value
+    def isMT(self):
+        if self.head==None:
+            return True
         else:
             return False
-    def deQueue(self):
-        if self.isEmpty():
-            return "Queue is empty"
-        else:
-            k=self.linkedlist.head.val
-            if self.linkedlist.head==self.linkedlist.tail:
-                k=self.linkedlist.head.val
-                self.linkedlist.head=None
-                self.linkedlist.tail=None
-                return k
-            else:
-                self.linkedlist.head=self.linkedlist.head.next
-                return k
-            
-    def delete(self):
-        self.linkedlist.head=None
-        self.linkedlist.tail=None
-        print("Queue is successfully deleted!")
-    
-if __name__=="__main__":
-    queue=Queue()
-    queue.enQueue(34)
-    queue.enQueue(28)
-    queue.enQueue(21)
-    queue.enQueue(13)
-    print(queue)
-    print(queue.deQueue())
-    print(queue)
-    queue.delete()
-    print(queue)
