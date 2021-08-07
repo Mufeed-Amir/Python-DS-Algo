@@ -2,42 +2,66 @@ from QueueClass import *
 class TreeNode:
      def __init__(self,val):
           self.val=val
-          self.leftchild=None
-          self.rightchild=None
+          self.left=None
+          self.right=None
 
-n1=TreeNode(1)  
+rootNode=TreeNode(1)  
 n2=TreeNode(2)
 n3=TreeNode(3)
 n4=TreeNode(4)
 n5=TreeNode(5)
 n6=TreeNode(6)
 n7=TreeNode(7)
-n1.leftchild=n2
-n1.rightchild=n3
-n2.leftchild=n4
-n2.leftchild=n5
-n3.leftchild=n6
-n4.rightchild=n7
+rootNode.left=n2
+rootNode.right=n3
+n2.left=n4
+n2.right=n5
+n3.left=n6
+n3.right=n7
+
 """            n1
           n2        n3
      n4        n5     """
 
-def traversal(rootNode):
+def levelOrderTraversal(rootNode):
      if not rootNode:
           return
      else:
           q=Queue()
           q.enQueue(rootNode)
-          tempNode=q.head
           while not q.isMT():
-               val=q.deQueue()
-               print(val.val)
-               if val.leftchild:
-                    q.enQueue(val.leftchild)
-               if val.rightchild:
-                    q.enQueue(val.rightchild)
+               node=q.deQueue()
+               print(node.val)
+               if node.left:
+                    q.enQueue(node.left)
+               if node.right:
+                    q.enQueue(node.right)
+def preOrderTraversal(rootNode):
+     if not rootNode:
+          return
+     else:
+          print(rootNode.val)
+          preOrderTraversal(rootNode.left)
+          preOrderTraversal(rootNode.right)
 
-traversal(n1)
+def postOrderTraversal(rootNode):
+     if not rootNode:
+          return
+     else:
+          preOrderTraversal(rootNode.left)
+          preOrderTraversal(rootNode.right)
+          print(rootNode.val)
+          
+def inOrderTraversal(rootNode):
+     if not rootNode:
+          return
+     else:
+          preOrderTraversal(rootNode.left)
+          print(rootNode.val)
+          preOrderTraversal(rootNode.right)
+          
+
+inOrderTraversal(rootNode)
      
 
                     
