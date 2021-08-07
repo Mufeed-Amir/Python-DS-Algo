@@ -37,7 +37,7 @@ class TreeNode:
                print(self.list[index])
                self.preOrderTraversal(2*index+1)
      def levelOrderTraversal(self):
-          for i in range(1,len(self.list)):
+          for i in range(1,self.lastUI + 1):
                print(self.list[i])
 
                     
