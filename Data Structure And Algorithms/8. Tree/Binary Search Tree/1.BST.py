@@ -5,7 +5,6 @@ class BSTNode:
           self.left=None
           self.right=None
 
-
 def insertNode(rootNode,value):
      if rootNode.val==None:
           rootNode.val=value
@@ -70,6 +69,11 @@ def search(rootNode,target):
                print("Found")
           else:
                search(rootNode.right, target)    
+
+def deleteNode(rootNode,target):
+     pass
+
+     
 
            
 
